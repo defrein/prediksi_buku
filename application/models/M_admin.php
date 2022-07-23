@@ -15,4 +15,15 @@ class M_admin extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    public function dt_buku_tambah()
+    {
+        $data = array(
+            'id_buku' => $this->input->post('id_buku'),
+            'nama_buku' => $this->input->post('nama_buku'),
+            'jenis_buku' => $this->input->post('jenis_buku'),
+            'jumlah_isi' => $this->input->post('jumlah_isi')
+        );
+        return $this->db->insert('buku', $data);
+    }
 }

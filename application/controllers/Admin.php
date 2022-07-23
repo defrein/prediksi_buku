@@ -42,4 +42,27 @@ class Admin extends CI_Controller
         $data['buku'] = $this->m_admin->dt_buku();
         $this->tampil($data);
     }
+
+    public function buku_tambah()
+    {
+        $data['judul'] = 'Tambah Data Buku';
+        $data['page'] = 'buku_tambah';
+
+        $this->form_validation->set_rules(
+            'id_buku',
+            'Isikan ID Buku',
+            'required|min_length[5]|max_length[5]',
+            array('required' => '%s harus diisi.')
+        );
+        $this->form_validation->set_rules('nama_buku', 'Isikan Nama Buku', 'required');
+        $this->form_validation->set_rules('jenis_buku', 'Isikan Jenis Buku', 'required');
+        $this->form_validation->set_rules('jumlah_isi', 'Isikan Jumlah Isi Buku', 'required');
+
+        if ($this->form_validation->run() === FALSE) {
+            $this->tampil($data);
+        } else {
+            $this->m_admin->dt_buku_tambah();
+            redirect(base_url('admin/buku'));
+        }
+    }
 }

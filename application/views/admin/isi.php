@@ -83,7 +83,7 @@ if ($page == 'home') {
 </div>
 <?php
 }
-//==================================== SANTRI ====================================
+//==================================== BUKU ====================================
 else if ($page == 'buku') {
 ?>
 <div class="content-wrapper">
@@ -137,5 +137,78 @@ else if ($page == 'buku') {
     </section>
 </div>
 
+<?php
+}
+
+//--------------------------------- Tambah ---------------------------------
+else if ($page == 'buku_tambah') {
+?>
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1><?php echo  $judul; ?></h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="card">
+            <div class="card-body">
+
+                <form method="POST" action="<?php echo base_url('admin/buku_tambah'); ?>" class="form-horizontal">
+
+                    <div class="card-body">
+
+                        <div class="form-group row">
+                            <label for="nama_santri" class="col-sm-2 col-form-label">ID Buku</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="id_buku" id="id_buku"
+                                    value="<?php echo set_value('id_buku'); ?>" placeholder="Masukkan Nama Santri">
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('id_buku')); ?></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="nama_santri" class="col-sm-2 col-form-label">Nama Buku</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="nama_buku" id="nama_buku"
+                                    value="<?php echo set_value('nama_buku'); ?>" placeholder="Masukkan Nama Buku">
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('nama_buku')); ?></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="nama_alias" class="col-sm-2 col-form-label">Jenis Buku</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="jenis_buku" id="jenis_buku"
+                                    value="<?php echo set_value('jenis_buku'); ?>" placeholder="Masukkan Jenis Buku">
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('jenis_buku')); ?></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="nama_alias" class="col-sm-2 col-form-label">Jumlah Isi (Lembar)</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="jumlah_isi" id="jumlah_isi"
+                                    value="<?php echo set_value('jumlah_isi'); ?>" placeholder="Masukkan Jumlah Isi">
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('jumlah_isi')); ?></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-info">Simpan</button>
+                    </div>
+                </form>
+
+
+            </div>
+    </section>
+</div>
 <?php
 }
