@@ -21,6 +21,7 @@ class Login extends CI_Controller
                         redirect(base_url("admin"));
                     else
                         show_404();
+                    echo "Hayo kenapa";
                 } else {
                     $data['pesan'] = 'username password salah';
                     $this->load->view("login", $data);
