@@ -171,7 +171,7 @@ class Admin extends CI_Controller
     // =============================== PREDIKSI =================================
     public function prediksi()
     {
-        $data['judul'] = 'Data Hasil Prediksi Buku';
+        $data['judul'] = 'Data Prediksi Buku';
         $data['page'] = 'prediksi';
         $data['prediksi'] = $this->m_admin->dt_prediksi();
         $this->tampil($data);

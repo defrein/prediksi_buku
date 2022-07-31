@@ -42,7 +42,7 @@ if ($page == 'home') {
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
-                        <a href="<?php echo base_url('admin/guru') ?>" class="small-box-footer">More info <i
+                        <a href="<?php echo base_url('admin/prediksi') ?>" class="small-box-footer">More info <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -600,8 +600,8 @@ else if ($page == 'buku_tambah') {
                             <a href=<?php echo base_url("admin/prediksi_detil/") . $d['id_hasil_prediksi']; ?>>
                                 <i class="fas fa-search-plus"></i></a>
                             <a href=<?php echo base_url("admin/prediksi_hapus/") . $d['id_hasil_prediksi']; ?>
-                                onclick="return confirm('Yakin menghapus prediksi : <?php echo $d['id_hasil_prediksi']; ?> ?');"
-                                ;><i class="fas fa-trash-alt"></i></a>
+                                onclick="return confirm('Yakin menghapus prediksi?');" ;><i
+                                    class="fas fa-trash-alt"></i></a>
 
                         </td>
                     </tr>
