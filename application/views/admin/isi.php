@@ -26,7 +26,7 @@ if ($page == 'home') {
                         <div class="icon">
                             <i class="ion ion-bookmark"></i>
                         </div>
-                        <a href="<?php echo base_url('admin/santri') ?>" class="small-box-footer">More info <i
+                        <a href="<?php echo base_url('admin/buku') ?>" class="small-box-footer">More info <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -96,12 +96,12 @@ else if ($page == 'buku') {
             </div>
         </div>
     </section>
-
+    <?php print_r($buku); ?>
     <section class="content">
         <div class="card">
             <div class="card-body">
                 <a href=<?php echo base_url("admin/buku_tambah") ?> class="btn btn-primary" style="margin-bottom:15px">
-                    Tambah Santri</a>
+                    Tambah Buku</a>
                 <table id="datatable_01" class="table table-bordered">
                     <thead>
                         <tr>
@@ -122,8 +122,8 @@ else if ($page == 'buku') {
                         <td>
                             <a href=<?php echo base_url("admin/buku_edit/") . $d['id_buku']; ?>><button type="button"
                                     class="btn btn-warning">Ubah</button></a>
-                            <a href=href=<?php echo base_url("admin/buku_hapus/") . $d['id_buku']; ?>
-                                onclick="return confirm('Yakin menghapus Santri : <?php echo $d['nama_buku']; ?> ?');"
+                            <a href=<?php echo base_url("admin/buku_hapus/") . $d['id_buku']; ?>
+                                onclick="return confirm('Yakin menghapus Buku : <?php echo $d['nama_buku']; ?> ?');"
                                 ;><button type="button" class="btn btn-danger">Hapus</button></a>
 
                         </td>
@@ -163,16 +163,16 @@ else if ($page == 'buku_tambah') {
                     <div class="card-body">
 
                         <div class="form-group row">
-                            <label for="nama_santri" class="col-sm-2 col-form-label">ID Buku</label>
+                            <label for="id_buku" class="col-sm-2 col-form-label">ID Buku</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="id_buku" id="id_buku"
-                                    value="<?php echo set_value('id_buku'); ?>" placeholder="Masukkan Nama Santri">
+                                    value="<?php echo set_value('id_buku'); ?>" placeholder="Masukkan Nama Buku">
                                 <span
                                     class="badge badge-warning"><?php echo strip_tags(form_error('id_buku')); ?></span>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="nama_santri" class="col-sm-2 col-form-label">Nama Buku</label>
+                            <label for="nama_buku" class="col-sm-2 col-form-label">Nama Buku</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="nama_buku" id="nama_buku"
                                     value="<?php echo set_value('nama_buku'); ?>" placeholder="Masukkan Nama Buku">
@@ -207,6 +207,572 @@ else if ($page == 'buku_tambah') {
                 </form>
 
 
+            </div>
+    </section>
+</div>
+<?php
+    //--------------------------------- Edit ---------------------------------
+
+} else if ($page == 'buku_edit') {
+?>
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1><?php echo  $judul; ?></h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="card">
+            <div class="card-body">
+
+                <form method="POST" action="<?php echo base_url('admin/buku_edit/' . $d['id_buku']); ?>"
+                    class="form-horizontal">
+
+                    <div class="card-body">
+
+                        <div class="form-group row">
+                            <label for="id_buku" class="col-sm-2 col-form-label">ID Buku</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="id_buku" id="id_buku"
+                                    value="<?php echo set_value('id_buku', $d['id_buku']); ?>"
+                                    placeholder="Masukkan Nama Buku">
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('id_buku')); ?></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="nama_buku" class="col-sm-2 col-form-label">Nama Buku</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="nama_buku" id="nama_buku"
+                                    value="<?php echo set_value('nama_buku', $d['nama_buku']); ?>"
+                                    placeholder="Masukkan Nama Buku">
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('nama_buku')); ?></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="jenis_buku" class="col-sm-2 col-form-label">Jenis Buku</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="jenis_buku" id="jenis_buku"
+                                    value="<?php echo set_value('jenis_buku', $d['jenis_buku']); ?>"
+                                    placeholder="Masukkan Jenis Buku">
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('jenis_buku')); ?></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="jumlah_isi" class="col-sm-2 col-form-label">Jumlah Isi (Lembar)</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="jumlah_isi" id="jumlah_isi"
+                                    value="<?php echo set_value('jumlah_isi', $d['jumlah_isi']); ?>"
+                                    placeholder="Masukkan Jumlah Isi">
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('jumlah_isi')); ?></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-info">Simpan</button>
+                    </div>
+                </form>
+
+
+            </div>
+    </section>
+</div>
+<?php
+    //==================================== PRODUKSI ====================================
+
+} else if ($page == 'produksi') {
+?>
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1><?php echo  $judul; ?></h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="card">
+            <div class="card-body">
+                <a href=<?php echo base_url("admin/produksi_tambah") ?> class="btn btn-primary"
+                    style="margin-bottom:15px">
+                    Tambah Produksi</a>
+                <table id="datatable_01" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Buku</th>
+                            <th>Bulan</th>
+                            <th>Tahun</th>
+                            <th>Permintaan</th>
+                            <th>Sisa Stok</th>
+                            <th>Produksi</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <?php
+                        foreach ($produksi as $d) { ?>
+                    <tr>
+                        <td><?php echo $d['id_produksi'] ?></td>
+                        <td><?php echo $d['nama_buku'] ?></td>
+                        <td><?php echo $d['nama_bulan'] ?></td>
+                        <td><?php echo $d['tahun'] ?></td>
+                        <td><?php echo $d['permintaan'] ?></td>
+                        <td><?php echo $d['sisa_stok'] ?></td>
+                        <td><?php echo $d['jumlah_produksi'] ?></td>
+                        <td>
+                            <a href=<?php echo base_url("admin/produksi_edit/") . $d['id_produksi']; ?>> <i
+                                    class="fas fa-pencil-alt"></i> </a>
+                            <a href=<?php echo base_url("admin/produksi_hapus/") . $d['id_produksi']; ?>
+                                onclick="return confirm('Yakin menghapus produksi : <?php echo $d['id_produksi']; ?> ?');"
+                                ;><i class="fas fa-trash-alt"></i></a>
+
+                        </td>
+                    </tr>
+                    <?php
+                        }
+                        ?>
+                </table>
+
+            </div>
+    </section>
+</div>
+
+<?php
+    // ------------------------------------------- Tambah Produksi ----------------------------------------------
+} else if ($page == 'produksi_tambah') {
+?>
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1><?php echo  $judul; ?></h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="card">
+            <div class="card-body">
+
+                <form method="POST" action="<?php echo base_url('admin/produksi_tambah'); ?>" class="form-horizontal">
+
+                    <div class="card-body">
+
+                        <div class="form-group row">
+                            <label for="id_buku" class="col-sm-2 col-form-label">Pilih Buku</label>
+                            <div class="col-sm-10">
+                                <?php echo form_dropdown('id_buku', $ddbuku, set_value('id_buku')); ?>
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('id_buku')); ?></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="id_bulan" class="col-sm-2 col-form-label">Bulan</label>
+                            <div class="col-sm-10">
+                                <?php echo form_dropdown('id_bulan', $ddbulan, set_value('id_bulan')); ?>
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('id_bulan')); ?></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="tahun" class="col-sm-2 col-form-label">Tahun</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="tahun" id="tahun"
+                                    value="<?php echo set_value('tahun'); ?>" placeholder="Masukkan tahun produksi">
+                                <span class="badge badge-warning"><?php echo strip_tags(form_error('tahun')); ?></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="permintaan" class="col-sm-2 col-form-label">Permintaan</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="permintaan" id="permintaan"
+                                    value="<?php echo set_value('permintaan'); ?>"
+                                    placeholder="Masukkan jumlah permintaan">
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('permintaan')); ?></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="sisa_stok" class="col-sm-2 col-form-label">Sisa Stok</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="sisa_stok" id="sisa_stok"
+                                    value="<?php echo set_value('sisa_stok'); ?>" placeholder="Masukkan sisa stok">
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('sisa_stok')); ?></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="jumlah_produksi" class="col-sm-2 col-form-label">Produksi</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="jumlah_produksi" id="jumlah_produksi"
+                                    value="<?php echo set_value('jumlah_produksi'); ?>"
+                                    placeholder="Masukkan jumlah produksi">
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('jumlah_produksi')); ?></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-info">Simpan</button>
+                    </div>
+                </form>
+
+
+            </div>
+    </section>
+</div>
+<?php
+
+    //--------------------------------- Edit Produksi ---------------------------------
+} else if ($page == 'produksi_edit') {
+?>
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1><?php echo  $judul; ?></h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="card">
+            <div class="card-body">
+
+                <form method="POST" action="<?php echo base_url('admin/produksi_edit/' . $d['id_produksi']); ?>"
+                    class="form-horizontal">
+
+                    <div class="card-body">
+
+                        <div class="form-group row">
+                            <label for="id_buku" class="col-sm-2 col-form-label">Pilih Buku</label>
+                            <div class="col-sm-10">
+                                <?php echo form_dropdown('id_buku', $ddbuku, set_value('id_buku', $d['id_buku']), 'class=form-control'); ?>
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('id_buku')); ?></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="id_bulan" class="col-sm-2 col-form-label">Bulan</label>
+                            <div class="col-sm-10">
+                                <?php echo form_dropdown('id_bulan', $ddbulan, set_value('id_bulan', $d['id_bulan']), 'class=form-control'); ?>
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('id_bulan')); ?></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="tahun" class="col-sm-2 col-form-label">Tahun</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="tahun" id="tahun"
+                                    value="<?php echo set_value('tahun', $d['tahun']); ?>"
+                                    placeholder="Masukkan Nama Buku">
+                                <span class="badge badge-warning"><?php echo strip_tags(form_error('tahun')); ?></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="permintaan" class="col-sm-2 col-form-label">Permintaan</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="permintaan" id="permintaan"
+                                    value="<?php echo set_value('permintaan', $d['permintaan']); ?>"
+                                    placeholder="Masukkan Nama Buku">
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('permintaan')); ?></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="sisa_stok" class="col-sm-2 col-form-label">Sisa Stok</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="sisa_stok" id="sisa_stok"
+                                    value="<?php echo set_value('sisa_stok', $d['sisa_stok']); ?>"
+                                    placeholder="Masukkan Nama Buku">
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('sisa_stok')); ?></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="jumlah_produksi" class="col-sm-2 col-form-label">Produksi</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="jumlah_produksi" id="jumlah_produksi"
+                                    value="<?php echo set_value('jumlah_produksi', $d['jumlah_produksi']); ?>"
+                                    placeholder="Masukkan Nama Buku">
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('jumlah_produksi')); ?></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-info">Simpan</button>
+                    </div>
+                </form>
+            </div>
+    </section>
+</div>
+<?php
+
+    // =============================================== PREDIKSI ================================================
+} else if ($page == 'prediksi') {
+?>
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1><?php echo  $judul; ?></h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="card">
+            <div class="card-body">
+                <a href=<?php echo base_url("admin/prediksi_tambah") ?> class="btn btn-primary"
+                    style="margin-bottom:15px">
+                    Tambah Prediksi</a>
+                <table id="datatable_01" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Buku</th>
+                            <th>Bulan</th>
+                            <th>Tahun</th>
+                            <th>Permintaan</th>
+                            <th>Sisa Stok</th>
+                            <th>Produksi</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <?php
+                        foreach ($prediksi as $d) { ?>
+                    <tr>
+                        <td><?php echo $d['id_hasil_prediksi'] ?></td>
+                        <td><?php echo $d['nama_buku'] ?></td>
+                        <td><?php echo $d['nama_bulan'] ?></td>
+                        <td><?php echo $d['tahun'] ?></td>
+                        <td><?php echo $d['permintaan'] ?></td>
+                        <td><?php echo $d['sisa_stok'] ?></td>
+                        <td style="color:red; font-weight:bold;">
+                            <?php echo $d['prediksi_produksi'] ?>
+                        </td>
+                        <td>
+                            <a href=<?php echo base_url("admin/prediksi_edit/") . $d['id_hasil_prediksi']; ?>> <i
+                                    class="fas fa-pencil-alt"></i> </a>
+                            <a href=<?php echo base_url("admin/prediksi_hapus/") . $d['id_hasil_prediksi']; ?>
+                                onclick="return confirm('Yakin menghapus prediksi : <?php echo $d['id_hasil_prediksi']; ?> ?');"
+                                ;><i class="fas fa-trash-alt"></i></a>
+
+                        </td>
+                    </tr>
+                    <?php
+                        }
+                        ?>
+                </table>
+
+            </div>
+    </section>
+</div>
+
+<?php
+    // ------------------------------------------- Tambah Prediksi ----------------------------------------------
+} else if ($page == 'prediksi_tambah') {
+?>
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1><?php echo  $judul; ?></h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="card">
+            <div class="card-body">
+
+                <form method="POST" action="<?php echo base_url('admin/prediksi_tambah'); ?>" class="form-horizontal">
+
+                    <div class="card-body">
+
+                        <div class="form-group row">
+                            <label for="id_buku" class="col-sm-2 col-form-label">Pilih Buku</label>
+                            <div class="col-sm-10">
+                                <?php echo form_dropdown('id_buku', $ddbuku, set_value('id_buku')); ?>
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('id_buku')); ?></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="id_bulan" class="col-sm-2 col-form-label">Bulan</label>
+                            <div class="col-sm-10">
+                                <?php echo form_dropdown('id_bulan', $ddbulan, set_value('id_bulan')); ?>
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('id_bulan')); ?></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="tahun" class="col-sm-2 col-form-label">Tahun</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="tahun" id="tahun"
+                                    value="<?php echo set_value('tahun'); ?>" placeholder="Masukkan tahun produksi">
+                                <span class="badge badge-warning"><?php echo strip_tags(form_error('tahun')); ?></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="permintaan" class="col-sm-2 col-form-label">Permintaan</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="permintaan" id="permintaan"
+                                    value="<?php echo set_value('permintaan'); ?>"
+                                    placeholder="Masukkan jumlah permintaan">
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('permintaan')); ?></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="sisa_stok" class="col-sm-2 col-form-label">Sisa Stok</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="sisa_stok" id="sisa_stok"
+                                    value="<?php echo set_value('sisa_stok'); ?>" placeholder="Masukkan sisa stok">
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('sisa_stok')); ?></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="prediksi_produksi" class="col-sm-2 col-form-label">Produksi</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="prediksi_produksi"
+                                    id="prediksi_produksi" value="<?php echo set_value('prediksi_produksi'); ?>"
+                                    placeholder="Masukkan prediksi produksi">
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('prediksi_produksi')); ?></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-info">Simpan</button>
+                    </div>
+                </form>
+
+
+            </div>
+    </section>
+</div>
+<?php
+
+    //--------------------------------- Edit Prediksi ---------------------------------
+} else if ($page == 'prediksi_edit') {
+?>
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1><?php echo  $judul; ?></h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="card">
+            <div class="card-body">
+
+                <form method="POST" action="<?php echo base_url('admin/prediksi_edit/' . $d['id_hasil_prediksi']); ?>"
+                    class="form-horizontal">
+
+                    <div class="card-body">
+
+                        <div class="form-group row">
+                            <label for="id_buku" class="col-sm-2 col-form-label">Pilih Buku</label>
+                            <div class="col-sm-10">
+                                <?php echo form_dropdown('id_buku', $ddbuku, set_value('id_buku', $d['id_buku']), 'class=form-control'); ?>
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('id_buku')); ?></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="id_bulan" class="col-sm-2 col-form-label">Bulan</label>
+                            <div class="col-sm-10">
+                                <?php echo form_dropdown('id_bulan', $ddbulan, set_value('id_bulan', $d['id_bulan']), 'class=form-control'); ?>
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('id_bulan')); ?></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="tahun" class="col-sm-2 col-form-label">Tahun</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="tahun" id="tahun"
+                                    value="<?php echo set_value('tahun', $d['tahun']); ?>"
+                                    placeholder="Masukkan Nama Buku">
+                                <span class="badge badge-warning"><?php echo strip_tags(form_error('tahun')); ?></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="permintaan" class="col-sm-2 col-form-label">Permintaan</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="permintaan" id="permintaan"
+                                    value="<?php echo set_value('permintaan', $d['permintaan']); ?>"
+                                    placeholder="Masukkan Nama Buku">
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('permintaan')); ?></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="sisa_stok" class="col-sm-2 col-form-label">Sisa Stok</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="sisa_stok" id="sisa_stok"
+                                    value="<?php echo set_value('sisa_stok', $d['sisa_stok']); ?>"
+                                    placeholder="Masukkan Nama Buku">
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('sisa_stok')); ?></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="prediksi_produksi" class="col-sm-2 col-form-label">Produksi</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="prediksi_produksi"
+                                    id="prediksi_produksi"
+                                    value="<?php echo set_value('prediksi_produksi', $d['prediksi_produksi']); ?>"
+                                    placeholder="Masukkan Nama Buku">
+                                <span
+                                    class="badge badge-warning"><?php echo strip_tags(form_error('prediksi_produksi')); ?></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-info">Simpan</button>
+                    </div>
+                </form>
             </div>
     </section>
 </div>
