@@ -89,18 +89,9 @@ class M_admin extends CI_Model
         return $query->result_array();
     }
 
-    public function dt_prediksi_tambah()
+    public function dt_prediksi_tambah($tabel, $data)
     {
-        $data = array(
-            'id_hasil_prediksi' => $this->input->post('id_hasil_prediksi'),
-            'id_buku' => $this->input->post('id_buku'),
-            'id_bulan' => $this->input->post('id_bulan'),
-            'tahun' => $this->input->post('tahun'),
-            'permintaan' => $this->input->post('permintaan'),
-            'sisa_stok' => $this->input->post('sisa_stok'),
-            'prediksi_produksi' => $this->input->post('prediksi_produksi')
-        );
-        return $this->db->insert('hasil_prediksi', $data);
+        return $this->db->insert($tabel, $data);
     }
 
     public function dt_prediksi_edit($id)
@@ -115,6 +106,18 @@ class M_admin extends CI_Model
         );
         $this->db->where('id_hasil_prediksi', $id);
         return $this->db->update('hasil_prediksi', $data);
+    }
+
+    public function dt_prediksi_detil($id)
+    {
+        $this->db->select('*');
+        $this->db->from('hasil_prediksi');
+        $this->db->join('buku', 'hasil_prediksi.id_buku = buku.id_buku', 'left');
+        $this->db->join('bulan', 'hasil_prediksi.id_bulan = bulan.id_bulan', 'left');
+        $this->db->join('data_fuzzy', 'hasil_prediksi.id_hasil_prediksi = data_fuzzy.id_hasil_prediksi', 'left');
+        $this->db->where('hasil_prediksi.id_hasil_prediksi', $id);
+        $query = $this->db->get();
+        return $query->row_array();
     }
 
 
@@ -148,5 +151,39 @@ class M_admin extends CI_Model
             array_push($nama_bulan, $result[$i]->nama_bulan);
         }
         return array_combine($id_bulan, $nama_bulan);
+    }
+
+    // -------------- tools fuzzy ------------------
+    public function getMax($id, $kolom)
+    {
+        $this->db->select("MAX($kolom) as num");
+        $this->db->from('data_produksi');
+        $this->db->where('id_buku', $id);
+        $query = $this->db->get();
+        $result = $query->row();
+        if (isset($result))
+            return $result->num;
+        return 0;
+    }
+    public function getMin($id, $kolom)
+    {
+        $this->db->select("MIN($kolom) as num");
+        $this->db->from('data_produksi');
+        $this->db->where('id_buku', $id);
+        $query = $this->db->get();
+        $result = $query->row();
+        if (isset($result))
+            return $result->num;
+        return 0;
+    }
+
+    public function ihp_terakhir()
+    {
+        $sql = "SELECT id_hasil_prediksi as num from hasil_prediksi ORDER BY id_hasil_prediksi DESC LIMIT 1";
+        $query = $this->db->query($sql);
+        $result = $query->row();
+        if (isset($result))
+            return $result->num;
+        return 0;
     }
 }
