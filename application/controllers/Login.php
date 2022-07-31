@@ -8,9 +8,9 @@ class Login extends CI_Controller
     { {
             $data['pesan'] = "";
             $this->form_validation->set_rules('password', 'Password', 'required', array('required' => 'Password tidak boleh kosong'));
-            if ($this->form_validation->run() == FALSE)
+            if ($this->form_validation->run() == FALSE) {
                 $this->load->view("login", $data);
-            else {
+            } else {
                 if ($data['dt'] = $this->m_umum->cek_login()) {
                     $data_user = array(
                         'username'  => $data['dt']['username'],
@@ -21,13 +21,11 @@ class Login extends CI_Controller
                         redirect(base_url("admin"));
                     else
                         show_404();
-                    echo "Hayo kenapa";
                 } else {
                     $data['pesan'] = 'username password salah';
                     $this->load->view("login", $data);
                 }
             }
-            $useraktif = $this->session->userdata('username');
         }
     }
     function logout()

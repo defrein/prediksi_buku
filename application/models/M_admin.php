@@ -177,6 +177,7 @@ class M_admin extends CI_Model
         return 0;
     }
 
+    // ------------------ mengambil data id_hasil_prediksi terakhir -------------------
     public function ihp_terakhir()
     {
         $sql = "SELECT id_hasil_prediksi as num from hasil_prediksi ORDER BY id_hasil_prediksi DESC LIMIT 1";

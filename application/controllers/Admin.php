@@ -62,9 +62,9 @@ class Admin extends CI_Controller
             'required|min_length[5]|max_length[5]',
             array('required' => '%s harus diisi.')
         );
-        $this->form_validation->set_rules('nama_buku', 'Isikan Nama Buku', 'required');
-        $this->form_validation->set_rules('jenis_buku', 'Isikan Jenis Buku', 'required');
-        $this->form_validation->set_rules('jumlah_isi', 'Isikan Jumlah Isi Buku', 'required');
+        $this->form_validation->set_rules('nama_buku', 'Buku', 'required');
+        $this->form_validation->set_rules('jenis_buku', 'Jenis Buku', 'required');
+        $this->form_validation->set_rules('jumlah_isi', 'Jumlah Isi Buku', 'required');
 
         if ($this->form_validation->run() === FALSE) {
             $this->tampil($data);
@@ -84,9 +84,9 @@ class Admin extends CI_Controller
             'required|min_length[5]|max_length[5]',
             array('required' => '%s harus diisi.')
         );
-        $this->form_validation->set_rules('nama_buku', 'Isikan Nama Buku', 'required');
-        $this->form_validation->set_rules('jenis_buku', 'Isikan Jenis Buku', 'required');
-        $this->form_validation->set_rules('jumlah_isi', 'Isikan Jumlah Isi Buku', 'required');
+        $this->form_validation->set_rules('nama_buku', 'Nama Buku', 'required');
+        $this->form_validation->set_rules('jenis_buku', 'Jenis Buku', 'required');
+        $this->form_validation->set_rules('jumlah_isi', 'Jumlah Isi Buku', 'required');
 
         $data['d'] = $this->m_umum->cari_data('buku', 'id_buku', $id);
 
@@ -119,10 +119,10 @@ class Admin extends CI_Controller
         $data['page'] = 'produksi_tambah';
 
 
-        $this->form_validation->set_rules('tahun', 'Isikan tahun produksi', 'required');
-        $this->form_validation->set_rules('permintaan', 'Isikan jumlah permintaan', 'required');
-        $this->form_validation->set_rules('sisa_stok', 'Isikan sisa stok', 'required');
-        $this->form_validation->set_rules('jumlah_produksi', 'Isikan jumlah produksi', 'required');
+        $this->form_validation->set_rules('tahun', 'Tahun', 'required');
+        $this->form_validation->set_rules('permintaan', 'Permintaan', 'required');
+        $this->form_validation->set_rules('sisa_stok', 'Sisa Stok', 'required');
+        $this->form_validation->set_rules('jumlah_produksi', 'Produksi', 'required');
 
         $this->form_validation->set_rules('id_buku', 'Pilih nama buku', 'callback_dd_cek');
         $this->form_validation->set_rules('id_bulan', 'Pilih bulan produksi', 'callback_dd_cek');
@@ -142,10 +142,10 @@ class Admin extends CI_Controller
     {
         $data['judul'] = 'Edit Data Produksi';
         $data['page'] = 'produksi_edit';
-        $this->form_validation->set_rules('tahun', 'Isikan tahun produksi', 'required');
-        $this->form_validation->set_rules('permintaan', 'Isikan jumlah permintaan', 'required');
-        $this->form_validation->set_rules('sisa_stok', 'Isikan sisa stok', 'required');
-        $this->form_validation->set_rules('jumlah_produksi', 'Isikan jumlah produksi', 'required');
+        $this->form_validation->set_rules('tahun', 'Tahun', 'required');
+        $this->form_validation->set_rules('permintaan', 'Permintaan', 'required');
+        $this->form_validation->set_rules('sisa_stok', 'Sisa Stok', 'required');
+        $this->form_validation->set_rules('jumlah_produksi', 'Produksi', 'required');
 
         $this->form_validation->set_rules('id_buku', 'Pilih nama buku', 'callback_dd_cek');
         $this->form_validation->set_rules('id_bulan', 'Pilih bulan produksi', 'callback_dd_cek');
@@ -177,17 +177,18 @@ class Admin extends CI_Controller
         $this->tampil($data);
     }
 
-    public function prediksi_tambah()
+    public function prediksi_tambah() // membuka form tambah prediksi
     {
         $data['judul'] = 'Tambah Prediksi';
         $data['page'] = 'prediksi_tambah';
         // mendapatkan id_hasil_produksi terakhir
         $data['ihp_terakhir'] = $this->m_admin->ihp_terakhir();
 
-        $this->form_validation->set_rules('tahun', 'Isikan tahun produksi', 'required');
-        $this->form_validation->set_rules('permintaan', 'Isikan jumlah permintaan', 'required');
-        $this->form_validation->set_rules('sisa_stok', 'Isikan sisa stok', 'required');
-        $this->form_validation->set_rules('prediksi_produksi', 'Isikan jumlah produksi', 'required');
+        $this->form_validation->set_rules('id_hasil_prediksi', 'ID Prediksi', 'required');
+        $this->form_validation->set_rules('tahun', 'Tahun', 'required');
+        $this->form_validation->set_rules('permintaan', 'Permintaan', 'required');
+        $this->form_validation->set_rules('sisa_stok', 'Sisa Stok', 'required');
+        $this->form_validation->set_rules('prediksi_produksi', 'Produksi', 'required');
 
         $this->form_validation->set_rules('id_buku', 'Pilih nama buku', 'callback_dd_cek');
         $this->form_validation->set_rules('id_bulan', 'Pilih bulan produksi', 'callback_dd_cek');
@@ -342,10 +343,10 @@ class Admin extends CI_Controller
     {
         $data['judul'] = 'Edit Prediksi';
         $data['page'] = 'prediksi_edit';
-        $this->form_validation->set_rules('tahun', 'Isikan tahun produksi', 'required');
-        $this->form_validation->set_rules('permintaan', 'Isikan jumlah permintaan', 'required');
-        $this->form_validation->set_rules('sisa_stok', 'Isikan sisa stok', 'required');
-        $this->form_validation->set_rules('prediksi_produksi', 'Isikan jumlah produksi', 'required');
+        $this->form_validation->set_rules('tahun', 'Tahun', 'required');
+        $this->form_validation->set_rules('permintaan', 'Permintaan', 'required');
+        $this->form_validation->set_rules('sisa_stok', 'Sisa Stok', 'required');
+        $this->form_validation->set_rules('prediksi_produksi', 'Produksi', 'required');
 
         $this->form_validation->set_rules('id_buku', 'Pilih nama buku', 'callback_dd_cek');
         $this->form_validation->set_rules('id_bulan', 'Pilih bulan produksi', 'callback_dd_cek');
@@ -370,7 +371,7 @@ class Admin extends CI_Controller
     public function prediksi_detil($id)
     {
         $data['judul'] = 'Detail Prediksi';
-        $data['subjudul'] = 'Perhitungan Fuzzy Logic Tsukamoto';
+        $data['subjudul'] = 'Perhitungan dengan Algoritma Fuzzy Logic Tsukamoto';
         $data['page'] = 'prediksi_detil';
 
         $data['d'] = $this->m_admin->dt_prediksi_detil($id);

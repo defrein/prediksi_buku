@@ -65,14 +65,20 @@ if ($page == 'home') {
             </div>
 
             <div class="card-body">
-                <h2>Info</h2>
-                <p>Ini adalah contoh sistem informasi menggunakan CI3 dengan sistem login,
-                    dan menggunakan data yang berelasi. Didalamnya juga menggunakan sistem
-                    multilogin untuk membedakan level user tertentu.<br>
-                    Besar harapan contoh coding ini bermanfaat sebagai start awal memahami
-                    membangun sebuah sistem informasi yang lebih rumit.</p>
-                <p>Dosen pengampu: Agus SBN</p>
+                <p><b>Petunjuk:</b></p>
+                <ul>
+                    <li>Tambahkan data buku dan data produksi baru atau gunakan data buku yang telah ada sebelum
+                        melakukan
+                        tambah
+                        prediksi.</li>
+                    <li>Lakukan ubah data dengan menekan ikon (pensil) jingga.</li>
+                    <li>Lakukan hapus data dengan menekan ikon (tempat sampah) merah.</li>
+                    <li>Hindari menghapus data buku yang sudah mempunyai data produksi.</li>
+                    <li>Isi form tambah prediksi dengan benar sebelum menekan tombol Generate.</li>
+                    <li>Riwayat prediksi akan tampil pada halaman prediksi.</li>
+                    <li>Detail prediksi dapat dilihat dengan menekan ikon (kaca pembesar) hijau.</li>
 
+                </ul>
             </div>
             <div class="card-footer">
                 Create By VIDEF@2022
@@ -202,6 +208,8 @@ else if ($page == 'buku_tambah') {
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-info">Simpan</button>
+                        <a class="btn btn-danger" href="<?php echo base_url('admin/buku'); ?>">
+                            Batal</a>
                     </div>
                 </form>
 
@@ -279,6 +287,8 @@ else if ($page == 'buku_tambah') {
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-info">Simpan</button>
+                        <a class="btn btn-danger" href="<?php echo base_url('admin/buku'); ?>">
+                            Batal</a>
                     </div>
                 </form>
 
@@ -433,6 +443,8 @@ else if ($page == 'buku_tambah') {
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-info">Simpan</button>
+                        <a class="btn btn-danger" href="<?php echo base_url('admin/produksi'); ?>">
+                            Batal</a>
                     </div>
                 </form>
 
@@ -526,6 +538,8 @@ else if ($page == 'buku_tambah') {
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-info">Simpan</button>
+                        <a class="btn btn-danger" href="<?php echo base_url('admin/produksi'); ?>">
+                            Batal</a>
                     </div>
                 </form>
             </div>
@@ -681,6 +695,8 @@ else if ($page == 'buku_tambah') {
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-info">Generate</button>
+                        <a class="btn btn-danger" href="<?php echo base_url('admin/prediksi'); ?>">
+                            Batal</a>
                     </div>
                 </form>
 
@@ -735,8 +751,7 @@ else if ($page == 'buku_tambah') {
                             <label for="tahun" class="col-sm-2 col-form-label">Tahun</label>
                             <div class="col-sm-10">
                                 <input type="number" class="form-control" name="tahun" id="tahun"
-                                    value="<?php echo set_value('tahun', $d['tahun']); ?>"
-                                    placeholder="Masukkan Nama Buku">
+                                    value="<?php echo set_value('tahun', $d['tahun']); ?>" placeholder="Masukkan Tahun">
                                 <span class="badge badge-warning"><?php echo strip_tags(form_error('tahun')); ?></span>
                             </div>
                         </div>
@@ -744,8 +759,7 @@ else if ($page == 'buku_tambah') {
                             <label for="permintaan" class="col-sm-2 col-form-label">Permintaan</label>
                             <div class="col-sm-10">
                                 <input type="number" class="form-control" name="permintaan" id="permintaan"
-                                    value="<?php echo set_value('permintaan', $d['permintaan']); ?>"
-                                    placeholder="Masukkan Nama Buku">
+                                    value="<?php echo set_value('permintaan', $d['permintaan']); ?>" readonly>
                                 <span
                                     class="badge badge-warning"><?php echo strip_tags(form_error('permintaan')); ?></span>
                             </div>
@@ -754,8 +768,7 @@ else if ($page == 'buku_tambah') {
                             <label for="sisa_stok" class="col-sm-2 col-form-label">Sisa Stok</label>
                             <div class="col-sm-10">
                                 <input type="number" class="form-control" name="sisa_stok" id="sisa_stok"
-                                    value="<?php echo set_value('sisa_stok', $d['sisa_stok']); ?>"
-                                    placeholder="Masukkan Nama Buku">
+                                    value="<?php echo set_value('sisa_stok', $d['sisa_stok']); ?>" readonly>
                                 <span
                                     class="badge badge-warning"><?php echo strip_tags(form_error('sisa_stok')); ?></span>
                             </div>
@@ -766,7 +779,7 @@ else if ($page == 'buku_tambah') {
                                 <input type="number" class="form-control" name="prediksi_produksi"
                                     id="prediksi_produksi"
                                     value="<?php echo set_value('prediksi_produksi', $d['prediksi_produksi']); ?>"
-                                    placeholder="Masukkan Nama Buku">
+                                    readonly>
                                 <span
                                     class="badge badge-warning"><?php echo strip_tags(form_error('prediksi_produksi')); ?></span>
                             </div>
@@ -775,6 +788,8 @@ else if ($page == 'buku_tambah') {
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-info">Simpan</button>
+                        <a class="btn btn-danger" href="<?php echo base_url('admin/prediksi'); ?>">
+                            Batal</a>
                     </div>
                 </form>
             </div>
@@ -786,194 +801,204 @@ else if ($page == 'buku_tambah') {
 <div class="content-wrapper">
     <section class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1><?php echo  $judul; ?></h1>
-                    <h3><?php echo  $subjudul; ?></h3>
-                    <div class="perhitungan_fuzzy">
-                        <br>
-                        <div class="info_prediksi">
-                            <table>
-                                <tr>
-                                    <td>ID Buku</td>
-                                    <td>:</td>
-                                    <td><?php echo $d['id_buku'] ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Nama Buku</td>
-                                    <td>:</td>
-                                    <td><?php echo $d['nama_buku'] ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Bulan </td>
-                                    <td>:</td>
-                                    <td><?php echo $d['nama_bulan'] ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Tahun </td>
-                                    <td>:</td>
-                                    <td><?php echo $d['tahun'] ?></td>
-                                </tr>
-                            </table>
-                        </div>
-                        <br>
-                        <div class="perhitungan_maxmin">
-                            <table>
-                                <tr>
-                                    <td>Data Tertinggi dan Terendah</td>
-                                </tr>
-                                <tr>
-                                    <td>Sisa stok tertinggi</td>
-                                    <td>:</td>
-                                    <td><?php echo $d['max_sisa'] ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Sisa stok terendah</td>
-                                    <td>:</td>
-                                    <td><?php echo $d['min_sisa'] ?></td>
-                                </tr>
-                                <tr>
-                                    <td>permintaan tertinggi</td>
-                                    <td>:</td>
-                                    <td><?php echo $d['max_permintaan'] ?></td>
-                                </tr>
-                                <tr>
-                                    <td>permintaan terendah</td>
-                                    <td>:</td>
-                                    <td><?php echo $d['min_permintaan'] ?></td>
-                                </tr>
-                                <tr>
-                                    <td>produksi tertinggi</td>
-                                    <td>:</td>
-                                    <td><?php echo $d['max_produksi'] ?></td>
-                                </tr>
-                                <tr>
-                                    <td>produksi terendah</td>
-                                    <td>:</td>
-                                    <td><?php echo $d['min_produksi'] ?></td>
-                                </tr>
-                            </table>
-                            <br>
-                            <div class="new_data">
-                                <table>
-                                    <tr>
-                                        <td>Berdasarkan Data Baru:</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Sisa stok</td>
-                                        <td>:</td>
-                                        <td><?php echo $d['new_sisa_stok'] ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Permintaan</td>
-                                        <td>:</td>
-                                        <td><?php echo $d['new_permintaan'] ?></td>
-                                    </tr>
-                                </table>
+            <div class="col-sm-12 judul">
+                <h1><?php echo  $judul; ?></h1>
+                <h4><?php echo  $subjudul; ?></h4>
+            </div>
+            <section class="content">
+                <div class="card">
+                    <div class="card-body">
+                        <div class=" perhitungan_fuzzy">
+                            <div class="row">
+                                <div class="info_prediksi" style="padding:5px ;">
+                                    <table>
+                                        <p><b>Informasi Prediksi</b></p>
+                                        <tr>
+                                            <td>ID Prediksi</td>
+                                            <td><span class="tab"></span>:</td>
+                                            <td><?php echo $d['id_hasil_prediksi'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Nama Buku</td>
+                                            <td><span class="tab"></span>:</td>
+                                            <td><?php echo $d['nama_buku'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bulan </td>
+                                            <td><span class="tab"></span>:</td>
+                                            <td><?php echo $d['nama_bulan'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tahun </td>
+                                            <td><span class="tab"></span>:</td>
+                                            <td><?php echo $d['tahun'] ?></td>
+                                        </tr>
+                                    </table>
+                                </div>
                             </div>
                             <br>
-                            <div class="fuzzifikasi">
-                                <table>
-                                    <tr>
-                                        <td>Fuzzifikasi:</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Sisa Stok Banyak</td>
-                                        <td>:</td>
-                                        <td><?php echo $d['sisa_banyak'] ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Sisa Stok Sedikit</td>
-                                        <td>:</td>
-                                        <td><?php echo $d['sisa_sedikit'] ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Permintaan Naik</td>
-                                        <td>:</td>
-                                        <td><?php echo $d['permintaan_naik'] ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Permintaan Turun</td>
-                                        <td>:</td>
-                                        <td><?php echo $d['permintaan_turun'] ?></td>
-                                    </tr>
-                                </table>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="perhitungan_maxmin">
+                                        <table id="datatable_02" class="table table-bordered">
+                                            <p><b>Data Tertinggi dan Terendah</b></p>
+                                            <tr>
+                                                <td>Sisa stok tertinggi</td>
+                                                <td><?php echo $d['max_sisa'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Sisa stok terendah</td>
+                                                <td><?php echo $d['min_sisa'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>permintaan tertinggi</td>
+                                                <td><?php echo $d['max_permintaan'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>permintaan terendah</td>
+                                                <td><?php echo $d['min_permintaan'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>produksi tertinggi</td>
+                                                <td><?php echo $d['max_produksi'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>produksi terendah</td>
+                                                <td><?php echo $d['min_produksi'] ?></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="col">
+                                    <div class="new_data">
+                                        <table id="datatable_02" class="table table-bordered">
+                                            <p><b>Input Prediksi</b></p>
+                                            <tr>
+                                                <td>Sisa stok</td>
+                                                <td><?php echo $d['new_sisa_stok'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Permintaan</td>
+                                                <td><?php echo $d['new_permintaan'] ?></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                             <br>
-                            <div class="inferensi">
-                                <table>
-                                    <tr>
-                                        <td>Fuzzifikasi:</td>
-                                    </tr>
-                                    <tr>
-                                        <td>R1 &#x3B1;</td>
-                                        <td>:</td>
-                                        <td><?php echo $d['a_rules_1'] ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>R2 &#x3B1;</td>
-                                        <td>:</td>
-                                        <td><?php echo $d['a_rules_2'] ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>R3 &#x3B1;</td>
-                                        <td>:</td>
-                                        <td><?php echo $d['a_rules_3'] ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>R4 &#x3B1;</td>
-                                        <td>:</td>
-                                        <td><?php echo $d['a_rules_4'] ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>R1 Z</td>
-                                        <td>:</td>
-                                        <td><?php echo $d['z_rules_1'] ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>R2 Z</td>
-                                        <td>:</td>
-                                        <td><?php echo $d['z_rules_2'] ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>R3 Z</td>
-                                        <td>:</td>
-                                        <td><?php echo $d['z_rules_3'] ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>R4 Z</td>
-                                        <td>:</td>
-                                        <td><?php echo $d['z_rules_4'] ?></td>
-                                    </tr>
-                                    <br>
-                                </table>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="fuzzifikasi">
+                                        <table id="datatable_02" class="table table-bordered">
+                                            <p><b>Fuzzifikasi</b></p>
+                                            <tr>
+                                                <td>Sisa Stok Banyak</td>
+                                                <td><?php echo $d['sisa_banyak'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Sisa Stok Sedikit</td>
+                                                <td><?php echo $d['sisa_sedikit'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Permintaan Naik</td>
+                                                <td><?php echo $d['permintaan_naik'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Permintaan Turun</td>
+                                                <td><?php echo $d['permintaan_turun'] ?></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="rules-inferensi">
+                                        <table id="datatable_02" class="table table-bordered">
+                                            <p><b>Rules</b></p>
+                                            <tr>
+                                                <td>R1</td>
+                                                <td>IF Sisa Stok BANYAK AND Permintaan NAIK THEN Produksi BERTAMBAH
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>R2</td>
+                                                <td>IF Sisa Stok SEDIKIT AND Permintaan NAIK THEN Produksi BERTAMBAH
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>R3</td>
+                                                <td>IF Sisa Stok BANYAK AND Permintaan TURUN THEN Produksi BERKURANG
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>R4</td>
+                                                <td>IF Sisa Stok SEDIKIT AND Permintaan TURUN THEN Produksi
+                                                    BERKURANG</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                             <br>
-                            <div class="defuzzifikasi">
-                                <table>
-                                    <tr>
-                                        <td>Defuzzifikasi</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Z</td>
-                                        <td>=</td>
-                                        <td><?php echo $d['z_defuzzifikasi'] ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hasil</td>
-                                        <td>=</td>
-                                        <td><?php echo $d['hasil_defuzzifikasi'] ?></td>
-                                    </tr>
-                                </table>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="inferensi">
+                                        <table id="datatable_02" class="table table-bordered">
+                                            <p><b>Inferensi</b></p>
+                                            <thead>
+                                                <tr>
+                                                    <th>Rules</th>
+                                                    <th>&#x3B1;</th>
+                                                    <th>Z</th>
+                                                </tr>
+                                            </thead>
+                                            <tr>
+                                                <td>R1</td>
+                                                <td><?php echo $d['a_rules_1'] ?></td>
+                                                <td><?php echo $d['z_rules_1'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>R2</td>
+                                                <td><?php echo $d['a_rules_2'] ?></td>
+                                                <td><?php echo $d['z_rules_2'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>R3</td>
+                                                <td><?php echo $d['a_rules_3'] ?></td>
+                                                <td><?php echo $d['z_rules_3'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>R4</td>
+                                                <td><?php echo $d['a_rules_4'] ?></td>
+                                                <td><?php echo $d['z_rules_4'] ?></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="defuzzifikasi">
+                                        <table id="datatable_02" class="table table-bordered">
+                                            <p><b>Defuzzifikasi</b></p>
+                                            <tr>
+                                                <td>Z</td>
+                                                <td>=</td>
+                                                <td><?php echo $d['z_defuzzifikasi'] ?></td>
+                                            </tr>
+                                            <tr style="color: blue; font-weight: 600;">
+                                                <td>Hasil</td>
+                                                <td>=</td>
+                                                <td><?php echo $d['hasil_defuzzifikasi'] ?></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
     </section>
-
-
 </div>
 <?php
 }
