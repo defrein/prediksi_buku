@@ -348,11 +348,9 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('sisa_stok', 'Sisa Stok', 'required');
         $this->form_validation->set_rules('prediksi_produksi', 'Produksi', 'required');
 
-        $this->form_validation->set_rules('id_buku', 'Pilih nama buku', 'callback_dd_cek');
         $this->form_validation->set_rules('id_bulan', 'Pilih bulan produksi', 'callback_dd_cek');
 
         $data['d'] = $this->m_umum->cari_data('hasil_prediksi', 'id_hasil_prediksi', $id);
-        $data['ddbuku'] = $this->m_admin->dropdown_buku();
         $data['ddbulan'] = $this->m_admin->dropdown_bulan();
 
         if ($this->form_validation->run() === FALSE) {

@@ -659,9 +659,10 @@ else if ($page == 'buku_tambah') {
                     class="form-horizontal">
                     <div class="card-body">
                         <div class="form-group row">
-                            <label for="id_buku" class="col-sm-2 col-form-label">Pilih Buku</label>
+                            <label for="id_buku" class="col-sm-2 col-form-label">ID Buku</label>
                             <div class="col-sm-10">
-                                <?php echo form_dropdown('id_buku', $ddbuku, set_value('id_buku', $d['id_buku']), 'class=form-control'); ?>
+                                <input type="text" class="form-control" name="id_buku" id="id_buku"
+                                    value="<?php echo set_value('id_buku', $d['id_buku']); ?>" readonly>
                                 <span
                                     class="badge badge-warning"><?php echo strip_tags(form_error('id_buku')); ?></span>
                             </div>
