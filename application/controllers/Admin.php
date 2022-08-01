@@ -289,7 +289,7 @@ class Admin extends CI_Controller
 
             // ------------ defuzzifikasi --------------
             $data['z_defuzzifikasi'] = ($data['a_rules_1'] * $data['z_rules_1'] + $data['a_rules_2'] * $data['z_rules_2'] + $data['a_rules_3'] * $data['z_rules_3'] + $data['a_rules_4'] * $data['z_rules_4']) / ($data['a_rules_1'] + $data['a_rules_2'] + $data['a_rules_3'] + $data['a_rules_4']);
-            $data['hasil_defuzzifikasi'] = round($data['z_defuzzifikasi']);
+            $data['hasil_defuzzifikasi'] = round($data['z_defuzzifikasi']); // pembulatan bilangan
 
             // menyimpan data perhitungan ke dalam array
             $dataFuzzy = array(

@@ -12,7 +12,6 @@ if ($page == 'home') {
             </div>
         </div>
     </section>
-
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -20,7 +19,6 @@ if ($page == 'home') {
                     <div class="small-box bg-info">
                         <div class="inner">
                             <h3><?php echo $jml_buku; ?></h3>
-
                             <p>Jumlah Buku</p>
                         </div>
                         <div class="icon">
@@ -36,7 +34,6 @@ if ($page == 'home') {
                     <div class="small-box bg-success">
                         <div class="inner">
                             <h3><?php echo $jml_prediksi; ?></h3>
-
                             <p>Jumlah Prediksi</p>
                         </div>
                         <div class="icon">
@@ -49,7 +46,6 @@ if ($page == 'home') {
             </div>
         </div>
     </section>
-
     <section class="content">
         <div class="card">
             <div class="card-header">
@@ -63,7 +59,6 @@ if ($page == 'home') {
                     </button>
                 </div>
             </div>
-
             <div class="card-body">
                 <p><b>Petunjuk:</b></p>
                 <ul>
@@ -77,14 +72,12 @@ if ($page == 'home') {
                     <li>Isi form tambah prediksi dengan benar sebelum menekan tombol Generate.</li>
                     <li>Riwayat prediksi akan tampil pada halaman prediksi.</li>
                     <li>Detail prediksi dapat dilihat dengan menekan ikon (kaca pembesar) hijau.</li>
-
                 </ul>
             </div>
             <div class="card-footer">
                 Create By VIDEF@2022
             </div>
         </div>
-
     </section>
 </div>
 <?php
@@ -130,21 +123,17 @@ else if ($page == 'buku') {
                             <a href=<?php echo base_url("admin/buku_hapus/") . $d['id_buku']; ?>
                                 onclick="return confirm('Yakin menghapus buku : <?php echo $d['id_buku']; ?> ?');" ;><i
                                     class="fas fa-trash-alt"></i></a>
-
                         </td>
                     </tr>
                     <?php
                         }
                         ?>
                 </table>
-
             </div>
     </section>
 </div>
-
 <?php
 }
-
 //--------------------------------- Tambah ---------------------------------
 else if ($page == 'buku_tambah') {
 ?>
@@ -158,68 +147,55 @@ else if ($page == 'buku_tambah') {
             </div>
         </div>
     </section>
-
     <section class="content">
         <div class="card">
             <div class="card-body">
-
-                <form method="POST" action="<?php echo base_url('admin/buku_tambah'); ?>" class="form-horizontal">
-
-                    <div class="card-body">
-
-                        <div class="form-group row">
-                            <label for="id_buku" class="col-sm-2 col-form-label">ID Buku</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name="id_buku" id="id_buku"
-                                    value="<?php echo set_value('id_buku'); ?>" placeholder="Masukkan Nama Buku">
-                                <span
-                                    class="badge badge-warning"><?php echo strip_tags(form_error('id_buku')); ?></span>
-                            </div>
+                <form method="POST" action="<?php echo base_url('admin/buku_tambah'); ?>" class="form-horizontal" <div
+                    class="card-body">
+                    <div class="form-group row">
+                        <label for="id_buku" class="col-sm-2 col-form-label">ID Buku</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="id_buku" id="id_buku"
+                                value="<?php echo set_value('id_buku'); ?>" placeholder="Masukkan Nama Buku">
+                            <span class="badge badge-warning"><?php echo strip_tags(form_error('id_buku')); ?></span>
                         </div>
-                        <div class="form-group row">
-                            <label for="nama_buku" class="col-sm-2 col-form-label">Nama Buku</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name="nama_buku" id="nama_buku"
-                                    value="<?php echo set_value('nama_buku'); ?>" placeholder="Masukkan Nama Buku">
-                                <span
-                                    class="badge badge-warning"><?php echo strip_tags(form_error('nama_buku')); ?></span>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="nama_alias" class="col-sm-2 col-form-label">Jenis Buku</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name="jenis_buku" id="jenis_buku"
-                                    value="<?php echo set_value('jenis_buku'); ?>" placeholder="Masukkan Jenis Buku">
-                                <span
-                                    class="badge badge-warning"><?php echo strip_tags(form_error('jenis_buku')); ?></span>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="nama_alias" class="col-sm-2 col-form-label">Jumlah Isi (Lembar)</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name="jumlah_isi" id="jumlah_isi"
-                                    value="<?php echo set_value('jumlah_isi'); ?>" placeholder="Masukkan Jumlah Isi">
-                                <span
-                                    class="badge badge-warning"><?php echo strip_tags(form_error('jumlah_isi')); ?></span>
-                            </div>
-                        </div>
-
                     </div>
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-info">Simpan</button>
-                        <a class="btn btn-danger" href="<?php echo base_url('admin/buku'); ?>">
-                            Batal</a>
+                    <div class="form-group row">
+                        <label for="nama_buku" class="col-sm-2 col-form-label">Nama Buku</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="nama_buku" id="nama_buku"
+                                value="<?php echo set_value('nama_buku'); ?>" placeholder="Masukkan Nama Buku">
+                            <span class="badge badge-warning"><?php echo strip_tags(form_error('nama_buku')); ?></span>
+                        </div>
                     </div>
-                </form>
-
-
+                    <div class="form-group row">
+                        <label for="nama_alias" class="col-sm-2 col-form-label">Jenis Buku</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="jenis_buku" id="jenis_buku"
+                                value="<?php echo set_value('jenis_buku'); ?>" placeholder="Masukkan Jenis Buku">
+                            <span class="badge badge-warning"><?php echo strip_tags(form_error('jenis_buku')); ?></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="nama_alias" class="col-sm-2 col-form-label">Jumlah Isi (Lembar)</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="jumlah_isi" id="jumlah_isi"
+                                value="<?php echo set_value('jumlah_isi'); ?>" placeholder="Masukkan Jumlah Isi">
+                            <span class="badge badge-warning"><?php echo strip_tags(form_error('jumlah_isi')); ?></span>
+                        </div>
+                    </div>
             </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-info">Simpan</button>
+                <a class="btn btn-danger" href="<?php echo base_url('admin/buku'); ?>">
+                    Batal</a>
+            </div>
+            </form>
+        </div>
     </section>
 </div>
 <?php
     //--------------------------------- Edit ---------------------------------
-
 } else if ($page == 'buku_edit') {
 ?>
 <div class="content-wrapper">
@@ -232,16 +208,12 @@ else if ($page == 'buku_tambah') {
             </div>
         </div>
     </section>
-
     <section class="content">
         <div class="card">
             <div class="card-body">
-
                 <form method="POST" action="<?php echo base_url('admin/buku_edit/' . $d['id_buku']); ?>"
                     class="form-horizontal">
-
                     <div class="card-body">
-
                         <div class="form-group row">
                             <label for="id_buku" class="col-sm-2 col-form-label">ID Buku</label>
                             <div class="col-sm-10">
@@ -252,7 +224,6 @@ else if ($page == 'buku_tambah') {
                                     class="badge badge-warning"><?php echo strip_tags(form_error('id_buku')); ?></span>
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <label for="nama_buku" class="col-sm-2 col-form-label">Nama Buku</label>
                             <div class="col-sm-10">
@@ -283,7 +254,6 @@ else if ($page == 'buku_tambah') {
                                     class="badge badge-warning"><?php echo strip_tags(form_error('jumlah_isi')); ?></span>
                             </div>
                         </div>
-
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-info">Simpan</button>
@@ -291,14 +261,11 @@ else if ($page == 'buku_tambah') {
                             Batal</a>
                     </div>
                 </form>
-
-
             </div>
     </section>
 </div>
 <?php
     //==================================== PRODUKSI ====================================
-
 } else if ($page == 'produksi') {
 ?>
 <div class="content-wrapper">
@@ -311,7 +278,6 @@ else if ($page == 'buku_tambah') {
             </div>
         </div>
     </section>
-
     <section class="content">
         <div class="card">
             <div class="card-body">
@@ -349,18 +315,15 @@ else if ($page == 'buku_tambah') {
                             <a href=<?php echo base_url("admin/produksi_hapus/") . $d['id_produksi']; ?>
                                 onclick="return confirm('Yakin menghapus produksi : <?php echo $d['id_produksi']; ?> ?');"
                                 ;><i class="fas fa-trash-alt"></i></a>
-
                         </td>
                     </tr>
                     <?php
                         }
                         ?>
                 </table>
-
             </div>
     </section>
 </div>
-
 <?php
     // ------------------------------------------- Tambah Produksi ----------------------------------------------
 } else if ($page == 'produksi_tambah') {
@@ -375,15 +338,11 @@ else if ($page == 'buku_tambah') {
             </div>
         </div>
     </section>
-
     <section class="content">
         <div class="card">
             <div class="card-body">
-
                 <form method="POST" action="<?php echo base_url('admin/produksi_tambah'); ?>" class="form-horizontal">
-
                     <div class="card-body">
-
                         <div class="form-group row">
                             <label for="id_buku" class="col-sm-2 col-form-label">Pilih Buku</label>
                             <div class="col-sm-10">
@@ -392,7 +351,6 @@ else if ($page == 'buku_tambah') {
                                     class="badge badge-warning"><?php echo strip_tags(form_error('id_buku')); ?></span>
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <label for="id_bulan" class="col-sm-2 col-form-label">Bulan</label>
                             <div class="col-sm-10">
@@ -401,7 +359,6 @@ else if ($page == 'buku_tambah') {
                                     class="badge badge-warning"><?php echo strip_tags(form_error('id_bulan')); ?></span>
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <label for="tahun" class="col-sm-2 col-form-label">Tahun</label>
                             <div class="col-sm-10">
@@ -447,13 +404,10 @@ else if ($page == 'buku_tambah') {
                             Batal</a>
                     </div>
                 </form>
-
-
             </div>
     </section>
 </div>
 <?php
-
     //--------------------------------- Edit Produksi ---------------------------------
 } else if ($page == 'produksi_edit') {
 ?>
@@ -467,16 +421,12 @@ else if ($page == 'buku_tambah') {
             </div>
         </div>
     </section>
-
     <section class="content">
         <div class="card">
             <div class="card-body">
-
                 <form method="POST" action="<?php echo base_url('admin/produksi_edit/' . $d['id_produksi']); ?>"
                     class="form-horizontal">
-
                     <div class="card-body">
-
                         <div class="form-group row">
                             <label for="id_buku" class="col-sm-2 col-form-label">Pilih Buku</label>
                             <div class="col-sm-10">
@@ -485,7 +435,6 @@ else if ($page == 'buku_tambah') {
                                     class="badge badge-warning"><?php echo strip_tags(form_error('id_buku')); ?></span>
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <label for="id_bulan" class="col-sm-2 col-form-label">Bulan</label>
                             <div class="col-sm-10">
@@ -494,7 +443,6 @@ else if ($page == 'buku_tambah') {
                                     class="badge badge-warning"><?php echo strip_tags(form_error('id_bulan')); ?></span>
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <label for="tahun" class="col-sm-2 col-form-label">Tahun</label>
                             <div class="col-sm-10">
@@ -534,7 +482,6 @@ else if ($page == 'buku_tambah') {
                                     class="badge badge-warning"><?php echo strip_tags(form_error('jumlah_produksi')); ?></span>
                             </div>
                         </div>
-
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-info">Simpan</button>
@@ -546,7 +493,6 @@ else if ($page == 'buku_tambah') {
     </section>
 </div>
 <?php
-
     // =============================================== PREDIKSI ================================================
 } else if ($page == 'prediksi') {
 ?>
@@ -560,7 +506,6 @@ else if ($page == 'buku_tambah') {
             </div>
         </div>
     </section>
-
     <section class="content">
         <div class="card">
             <div class="card-body">
@@ -602,7 +547,6 @@ else if ($page == 'buku_tambah') {
                             <a href=<?php echo base_url("admin/prediksi_hapus/") . $d['id_hasil_prediksi']; ?>
                                 onclick="return confirm('Yakin menghapus prediksi?');" ;><i
                                     class="fas fa-trash-alt"></i></a>
-
                         </td>
                     </tr>
                     <?php
@@ -612,7 +556,6 @@ else if ($page == 'buku_tambah') {
             </div>
     </section>
 </div>
-
 <?php
     // ------------------------------------------- Tambah / Generate Prediksi ----------------------------------
 } else if ($page == 'prediksi_tambah') {
@@ -627,13 +570,10 @@ else if ($page == 'buku_tambah') {
             </div>
         </div>
     </section>
-
     <section class="content">
         <div class="card">
             <div class="card-body">
-
                 <form method="POST" action="<?php echo base_url('admin/generate_fuzzy'); ?>" class="form-horizontal">
-
                     <div class="card-body">
                         <div class="form-group row">
                             <label for="id_hasil_prediksi" class="col-sm-2 col-form-label">ID Prediksi</label>
@@ -645,7 +585,6 @@ else if ($page == 'buku_tambah') {
                                     class="badge badge-warning"><?php echo strip_tags(form_error('id_hasil_prediksi')); ?></span>
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <label for="id_buku" class="col-sm-2 col-form-label">Pilih Buku</label>
                             <div class="col-sm-10">
@@ -654,7 +593,6 @@ else if ($page == 'buku_tambah') {
                                     class="badge badge-warning"><?php echo strip_tags(form_error('id_buku')); ?></span>
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <label for="id_bulan" class="col-sm-2 col-form-label">Bulan</label>
                             <div class="col-sm-10">
@@ -663,7 +601,6 @@ else if ($page == 'buku_tambah') {
                                     class="badge badge-warning"><?php echo strip_tags(form_error('id_bulan')); ?></span>
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <label for="tahun" class="col-sm-2 col-form-label">Tahun</label>
                             <div class="col-sm-10">
@@ -691,7 +628,6 @@ else if ($page == 'buku_tambah') {
                                     class="badge badge-warning"><?php echo strip_tags(form_error('sisa_stok')); ?></span>
                             </div>
                         </div>
-
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-info">Generate</button>
@@ -699,13 +635,10 @@ else if ($page == 'buku_tambah') {
                             Batal</a>
                     </div>
                 </form>
-
-
             </div>
     </section>
 </div>
 <?php
-
     //--------------------------------- Edit Prediksi ---------------------------------
 } else if ($page == 'prediksi_edit') {
 ?>
@@ -719,16 +652,12 @@ else if ($page == 'buku_tambah') {
             </div>
         </div>
     </section>
-
     <section class="content">
         <div class="card">
             <div class="card-body">
-
                 <form method="POST" action="<?php echo base_url('admin/prediksi_edit/' . $d['id_hasil_prediksi']); ?>"
                     class="form-horizontal">
-
                     <div class="card-body">
-
                         <div class="form-group row">
                             <label for="id_buku" class="col-sm-2 col-form-label">Pilih Buku</label>
                             <div class="col-sm-10">
@@ -737,7 +666,6 @@ else if ($page == 'buku_tambah') {
                                     class="badge badge-warning"><?php echo strip_tags(form_error('id_buku')); ?></span>
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <label for="id_bulan" class="col-sm-2 col-form-label">Bulan</label>
                             <div class="col-sm-10">
@@ -746,7 +674,6 @@ else if ($page == 'buku_tambah') {
                                     class="badge badge-warning"><?php echo strip_tags(form_error('id_bulan')); ?></span>
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <label for="tahun" class="col-sm-2 col-form-label">Tahun</label>
                             <div class="col-sm-10">
@@ -784,7 +711,6 @@ else if ($page == 'buku_tambah') {
                                     class="badge badge-warning"><?php echo strip_tags(form_error('prediksi_produksi')); ?></span>
                             </div>
                         </div>
-
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-info">Simpan</button>
