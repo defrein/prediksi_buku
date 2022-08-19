@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login Admin</title>
-
+    <link rel="icon" href="<?php echo base_url(); ?>assets/Adminlte/dist/img/icon_videf.png" type="image/x-icon">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -133,6 +133,57 @@
         margin-left: 20px;
         font-size: 18px;
         width: 80%;
+    }
+
+    @media only screen and (max-width: 768px) {
+        body {
+            overflow-y: scroll;
+        }
+
+        .container-login {
+            width: 90%;
+            position: relative;
+            margin: 20px auto;
+            transform: none;
+            left: 0%;
+            top: 0%;
+            flex-direction: column;
+        }
+
+        .logo,
+        .login-form {
+            width: 100%;
+            padding: 20px 10px;
+        }
+
+        .logo img {
+            width: 150px;
+        }
+
+        .logo p {
+            font-size: 14px;
+        }
+
+        .logo span {
+            font-size: 12px;
+        }
+
+        input,
+        button {
+            padding: 6px 15px;
+
+        }
+
+        input {
+            font-size: 14px;
+
+        }
+
+        form p {
+            font-size: 16px;
+
+        }
+
     }
     </style>
 </head>
