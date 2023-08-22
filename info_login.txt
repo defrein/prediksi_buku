@@ -1,4 +1,4 @@
 username: admin
 password: admin
 
-https://prediksi-buku.defjs.com/admin
+https://prediksi-buku.defjs.com/
